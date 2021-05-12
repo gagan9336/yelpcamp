@@ -1,0 +1,47 @@
+<%-include("../partials/header")%>
+
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-3"><i class="fas fa-campground"></i> Welcome To Our YelpCamp!!!</h1>
+      <!-- <a href="/campGround/new"><button>New post</button></a> -->
+      <p>
+        View Our Hand-Picked Campgrounds From All Over The World
+      </p>
+      <hr>
+      <p>
+      <form class="styled-form" action="/campGround" method="GET">
+        <div class="form-group  mb-3">
+          <input class="big-search-1 form-control" type="text" name="search" placeholder="Search For Blog, Post, etc...">
+          <button class="big-button-1 btn btn-info btn-block" value="search">Search</button>
+        </div>
+      </form>
+      </p>
+    </div>
+
+    <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+      <% campGround.forEach((campGround)=>{%>
+        <div class="col-md-3 col-sm-6" >
+          <div class="card mb-2">
+            <img src="<%=campGround.image %>" class="card-img-top" alt="...">
+            <div class="card-body p-0">
+              <h4 class="card-title text-center">
+                <%= campGround.name%>
+              </h4>
+            </div>
+            <p class="card-text text-center">
+              <%= campGround.description.substring(0, 100)%>
+            </p>
+            <a href="/campGround/<%=campGround._id%>" class="btn btn-md btn-success">More Info</a>
+    
+          </div>
+        </div>
+        <% }); %>
+    </div>
+
+  </div>
+
+<%-include("../partials/footer")%>
+
+
+

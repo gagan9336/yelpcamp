@@ -1,0 +1,112 @@
+<%-include("../partials/header") %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">YelpCamp</p>
+            <div class="list-group">
+                <li class="list-group-item active">Info 1</li>
+                <li class="list-group-item">Info 2</li>
+                <li class="list-group-item">Info 3</li>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <img class="image-responsive" src="<%=campground.image%>" alt="">
+                <div class="caption-full">
+                    <h4 class="pull-right"><%=campground.author.createdAt%></h4>
+                    <h4><a style="text-decoration: none;" href="#"><%=campground.name%></a></h4>
+                    <hr>
+                    <p><%=campground.description%></p>
+                    <p>
+                    <em>Submittet By <i class="fas fa-arrow-right"></i> <strong><%=campground.author.username%></strong> </em>    
+                    </p>
+                    <%if(currentUser && campground.author.id.equals(currentUser._id)){%>
+                    <div class="pull-right inline margin-show-div">
+                        <a class="btn btn-sm btn-warning" href="/campGround/<%=campground._id%>/edit">Edit</a>
+                        <form id="deleteform" action="/campGround/<%=campground._id%>?_method=DELETE" method="POST" style="display: inline;">
+                            <button class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </div>
+                    <% }; %>
+                </div>
+            </div>
+
+            
+            
+
+            <div class="well">
+                <div class="text-right">
+                    <a type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#loginModal">Add New Comment</a>
+                </div>
+                <hr>
+                <% campground.comments.forEach((comment)=>{ %>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-12">
+                            <strong><%=comment.author.username%></strong>
+                            <span class="pull-right"><%=comment.author.createdAt%></span>
+                            <p>
+                                <%=comment.text%>
+                                <%if(currentUser && comment.author.id.equals(currentUser._id)){%>
+                                <!-- Edit comment optional -->
+                                <!-- <a href="/campground/<%=campground._id%>/comments/<%=comment._id%>" class="btn btn-xs btn-warning" >
+                                    Edit
+                                    </a> -->
+                                    <span  class="pull-right" >
+                                    <form action="/campGround/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE"
+                                        method="POST">
+                                        <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                                    </form>
+                                    </span>
+
+                                <% }; %>
+                            </p>
+
+                        </div>
+                    </div>
+                <%})%>
+            </div>
+
+            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content"  style="background-color: blanchedalmond;">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add Comment To ~</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+            
+                           
+                                <h3 style="text-align: center;"><%=campground.name%></h3>
+                                <div >
+                                    <form action="/campGround/<%= campground._id%>/comments" method="POST">
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" name="comment[text]" placeholder="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-md btn-primary btn-block">Submit</button>
+                                        </div>
+                                    </form>
+                                    <!-- <a href="/campGround"><button>Go back!!!</button></a> -->
+                                </div>
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            
+
+
+
+        </div>
+    </div>
+</div>
+<%-include("../partials/footer")%>
+

@@ -1,0 +1,45 @@
+.thumbnail img{
+    width:100%;
+}
+.thumbnail{
+    padding:0;
+}
+.thumbnail .caption-full{
+    padding:9px;
+}
+.pull-right h4{
+    margin: auto auto;
+}
+
+body{
+    background-image: url(RedSunset.jpg);
+}
+
+/* nav{
+    background-image: url(BrokenHearts.jpg);
+} */
+#black{
+    background-color:black;
+}
+#highlight{
+    background-color: rgb(230, 230, 230);
+}
+
+.big-search-1 {
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.big-button-1 {
+    border-radius: 15px;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.styled-form {
+    margin: center;
+}
+
+.margin-show-div {
+    margin-bottom: 15px;
+}

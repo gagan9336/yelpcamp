@@ -1,0 +1,31 @@
+<%-include("../partials/header")%>
+
+<div class="container" style="text-align: center;">
+    <div class="row">
+<h1 style="text-align: center;">welcome to search</h1>
+<div style="width: 30%; margin:25px auto;">
+<form class="navbar-form navbar-left" action="/campGround/search" method="GET">
+    <div style="align-content: center;" class="form-group">
+
+        <div class="form-group">
+            <input id="deleteform" class="form-control" type="username" name="searchUser" value="<%=searchOptions.searchUser%>"
+                placeholder="username">
+                <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+
+    </div>
+  
+</form>
+
+<div>
+    <h1><%=searchOptions.username%></h1>
+    <% findUser.forEach(user =>{ %>
+    <h1><%=user.username%></h1>
+    <% })%>
+</div>
+</div>
+
+    </div>
+
+</div>
+
