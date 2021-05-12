@@ -9,7 +9,6 @@ var express        = require("express"),
     Campground     = require("./models/campground"),
     Comment        = require("./models/comment"),
     User           = require("./models/user"),
-    seedsDB        = require("./seeds");
 
 require('dotenv').config();
 
@@ -17,8 +16,6 @@ require('dotenv').config();
 var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campground"),
     indexRoutes      = require("./routes/index");
-
-
 
 mongoose.connect(process.env.MONGODB_URL, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false});
 
@@ -28,11 +25,6 @@ mongoose.connect(process.env.MONGODB_URL, { useUnifiedTopology: true, useNewUrlP
     app.use(methodOverride("_method"));
 
 
-    // seedsDB(); //seed database
-
-    //======================
-    //passport config
-    //======================
     app.use(require("express-session")({
         secret:"ONE AGAIN RUSTY WINS CUTEST DOG",
         resave:false,
