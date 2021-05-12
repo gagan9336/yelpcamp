@@ -18,7 +18,7 @@
                     <hr>
                     <p><%=campground.description%></p>
                     <p>
-                    <em>Submittet By <i class="fas fa-arrow-right"></i> <strong><%=campground.author.username%></strong> </em>    
+                    <em>Submitted By <i class="fas fa-arrow-right"></i> <strong><%=campground.author.username%></strong> </em>    
                     </p>
                     <%if(currentUser && campground.author.id.equals(currentUser._id)){%>
                     <div class="pull-right inline margin-show-div">

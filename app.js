@@ -17,6 +17,8 @@ var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campground"),
     indexRoutes      = require("./routes/index");
 
+const PORT = process.env.PORT || 3000;
+
 mongoose.connect(process.env.MONGODB_URL, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false});
 
     app.set("view engine", "ejs");
@@ -53,6 +55,6 @@ mongoose.connect(process.env.MONGODB_URL, { useUnifiedTopology: true, useNewUrlP
     app.use(commentRoutes);
 
     //port
-    app.listen(3000, () => {
-        console.log("The Yelp Camp Server Started");
+    app.listen(PORT, () => {
+        console.log(`The Yelp Camp Server Started at Port ${PORT}`);
     });
