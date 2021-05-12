@@ -11,13 +11,16 @@ var express        = require("express"),
     User           = require("./models/user"),
     seedsDB        = require("./seeds");
 
+require('dotenv').config();
+
 //requiring routes
 var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campground"),
     indexRoutes      = require("./routes/index");
 
 
-mongoose.connect('mongodb://localhost:27017/yelp_camp', { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false});
+
+mongoose.connect(process.env.MONGODB_URL, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false});
 
     app.set("view engine", "ejs");
     app.use(bodyParser.urlencoded({extended:true}));
